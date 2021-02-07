@@ -1,0 +1,150 @@
+*{
+    color: #383838;
+}
+a{
+    color: #383838;
+}
+.row{
+    width: 100%;
+}
+/* header */
+nav{
+    background-color: transparent;
+    margin: 4rem 0;
+}
+nav i{
+    color: rgb(219, 58, 0);
+    font-size: 2rem;
+    text-shadow: 0px 7px 20px gray;
+}
+.nav-item{
+    padding: 0 1.7rem;
+}
+
+/* search */
+.btn-danger{
+    background-color: rgb(219, 58, 0);
+}
+/* error messeage */
+.error-messeage{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+.error-messeage i{
+    display: block;
+    margin: 2rem auto;
+    font-size: 80px;
+    color: #ed4337;
+
+}
+.error-messeage h3{
+    font-weight: 200;
+}
+
+/* searched food area  */
+
+
+#all-food-searched{
+    width: 100%;
+    margin: 50px 0;
+}
+
+.foods{
+    background-color:  #f8f7f5;
+    width: 80%;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all .25s ease-in-out;
+    box-shadow: 0px 0px 0px gray;
+}
+
+.food-img{
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+    position: relative;
+    transition: all .25s ease-in-out;
+}
+.food-img img{
+    width: 100%;
+}
+.food-name{
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px;
+}
+.food-img h4{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(.5);
+    /* border-radius: 50%; */
+    opacity: 0;
+    color: white;
+    text-align: center;
+    line-height: 10rem;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transition: all .25s ease-in-out;
+
+}
+.foods:hover .food-img h4{
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: top center;
+}
+.foods:hover{
+    transform: scale(1.1);
+    box-shadow: 0 1px 20px gray;
+}
+
+
+
+
+/* show hide */
+.food-show{
+    /* width: 100%; */
+    margin: 2.5rem auto;
+    overflow: hidden;
+    display: block;
+}
+.food-show-img{
+    width: 80%;
+    height: 300px;
+    overflow: hidden;
+    margin: 20px 0;
+    border-radius: 20px;
+}
+.food-show-img img{
+    width: 100%;
+    /* position: relative;
+
+    top: 0;
+    left: 0; */
+}
+.food-show h4{
+    font-size: 15px;
+    font-weight: 400;
+    margin: 1.5rem 0;
+}
+#food-show-list{
+    list-style: none;
+    font-weight: 200;
+    padding-left: 0;
+    
+}
+#food-show-list i{
+    font-size: 20px;
+    margin: 5px 10px 5px 0;
+    color: rgb(228, 61, 0);
+}
+#food-show-list li{
+    margin-left: 0;
+}
