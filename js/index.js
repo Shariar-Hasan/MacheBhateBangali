@@ -82,6 +82,7 @@ function showFood(foodObject) {
                 </li>`;
                 i++;
             }
+            window.scrollTo({top : 200, behavior : "smooth"});
         })
     });
 }
