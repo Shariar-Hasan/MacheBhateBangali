@@ -3,6 +3,8 @@ const getAllSearchedFood = document.getElementById('all-food-searched');
 const getClickedFood = document.getElementById('food-show');
 
 
+
+                    // input nothing will show nothing
 setInterval(() => {
     if (getSearchInput.value == '') {
         getAllSearchedFood.innerHTML = '';
@@ -11,7 +13,7 @@ setInterval(() => {
 }, 0);
 
 
-
+                    // searching food 
 document.getElementById('search').addEventListener('submit', (e) => {
     getClickedFood.innerHTML = '';
     getAllSearchedFood.innerHTML = '';
@@ -26,13 +28,16 @@ document.getElementById('search').addEventListener('submit', (e) => {
 
 });
 
+
+                        // show food items under the search bar
 function showFood(foodObject) {
     let foods = foodObject.meals;
     getAllSearchedFood.innerHTML = ``;
 
     if (foods === null) {
-        getAllSearchedFood.innerHTML = `
-        <div class="error-messeage">
+        // this will show error, for Input,that is not fetching from api
+        getAllSearchedFood.innerHTML = 
+        `<div class="error-messeage">
             <div class="error-img">
                 <i class="fas fa-frown"></i>
             </div>
@@ -41,13 +46,12 @@ function showFood(foodObject) {
                 <h5>Please input correct keyword for searching food.</h5>
                 <h6>Thanks you very much</h6>
             </div>
-        </div>
-        `
+        </div>`
     }
     foods.forEach(food => {
 
-        getAllSearchedFood.innerHTML = getAllSearchedFood.innerHTML + `
-        <div class="col-sm-6 col-md-4 col-lg-3">
+        getAllSearchedFood.innerHTML = getAllSearchedFood.innerHTML + 
+        `<div class="col-sm-6 col-md-4 col-lg-3">
             <div class="foods" id="${food.idMeal}">
                 <div class="food-img">
                     <img src="${food.strMealThumb}" alt="">
@@ -55,8 +59,7 @@ function showFood(foodObject) {
                 </div>
                 <h6 class="food-name">${food.strMeal}</h6>
             </div>
-        </div>
-        `;
+        </div>`;
     });
     // console.log(foods);
     foods.forEach(food => {
@@ -74,10 +77,9 @@ function showFood(foodObject) {
             const getClickedFoodList = document.getElementById('food-show-list');
 
             let i = 1;
-            getClickedFoodList.innerHTML = '';
             while(food['strIngredient'+i] !== "" && food['strIngredient'+i] !== undefined){
-                getClickedFoodList.innerHTML = getClickedFoodList.innerHTML + `
-                <li><i class="fa fa-check-square" aria-hidden="true"></i>
+                getClickedFoodList.innerHTML = getClickedFoodList.innerHTML + 
+                `<li><i class="fa fa-check-square" aria-hidden="true"></i>
                 ${food['strMeasure'+i]} ${food['strIngredient'+i]}
                 </li>`;
                 i++;
@@ -86,4 +88,3 @@ function showFood(foodObject) {
         })
     });
 }
-
