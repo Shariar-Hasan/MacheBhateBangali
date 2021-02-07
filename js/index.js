@@ -52,7 +52,7 @@ function showFood(foodObject) {
         </div>
         `;
     });
-    console.log(foods);
+    // console.log(foods);
     foods.forEach(food => {
         document.getElementById(`${food.idMeal}`).addEventListener('click', () => {
             document.getElementById('food-show').innerHTML = `
@@ -65,14 +65,32 @@ function showFood(foodObject) {
             <h4>Ingredients</h4>
             <ul id="food-show-list"></ul>`
 
+            console.log(foods);
+            // foodIngredients = food.strInstructions;
+            // console.log(foodIngredients);
+            // foodIngredients.replace('\r','</li>');
+            // foodIngredients.replace('\n','<li>');
+            // console.log(foodIngredients);
+            // foodIngredients = '<li>' + foodIngredients + '</li>';
+            // document.getElementById('food-show-list').innerHTML = foodIngredients;
 
-            foodIngredients = food.strInstructions.split('\n');
-            console.log(foodIngredients[0]);
-            let li;
-            for(ingredient in foodIngredients){
-                li = `<li>${ingredient}</li>`
+            foodIngredients = food.strInstructions.split('\r\n');
+            let li ;
+            foodIngredients.forEach(ingredient => {
+                li = document.createElement('li');
+                li.innerHTML = `<li><i class="fas fa-check-square"></i>${ingredient}</li>`;
                 document.getElementById('food-show-list').appendChild(li);
-            }
+            });
+
+
+
+            // for(ingredient in foodIngredients){
+            //     li = document.createElement('li')
+            //     console.log(ingredient);
+            //     li.innerHTML = `<li>${ingredient}</li>`;
+            //     console.log(li);
+            //     document.getElementById('food-show-list').appendChild(li);
+            // }
         })
     });
 }
