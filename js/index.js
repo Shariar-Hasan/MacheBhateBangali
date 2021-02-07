@@ -1,14 +1,20 @@
 const getSearchInput = document.getElementById('search-bar');
 const getAllSearchedFood = document.getElementById('all-food-searched');
+const getClickedFood = document.getElementById('food-show');
+
+
 setInterval(() => {
     if (getSearchInput.value == '') {
         getAllSearchedFood.innerHTML = '';
+        getClickedFood.innerHTML = '';
     }
 }, 0);
 
 
 
 document.getElementById('search').addEventListener('submit', (e) => {
+    getClickedFood.innerHTML = '';
+    getAllSearchedFood.innerHTML = '';
     e.preventDefault();
     let foodQuery = document.getElementById('search-bar').value;
     if (foodQuery !== '') {
@@ -55,7 +61,7 @@ function showFood(foodObject) {
     // console.log(foods);
     foods.forEach(food => {
         document.getElementById(`${food.idMeal}`).addEventListener('click', () => {
-            document.getElementById('food-show').innerHTML = `
+            getClickedFood.innerHTML = `
             <div class="food-show-img">
                 <img src="${food.strMealThumb}" alt="">
             </div>
@@ -63,34 +69,19 @@ function showFood(foodObject) {
                 <h3>${food.strMeal}</h3>
             </div>
             <h4>Ingredients</h4>
-            <ul id="food-show-list"></ul>`
+            <ul id="food-show-list">
+            </ul>`;
+            const getClickedFoodList = document.getElementById('food-show-list');
 
-            console.log(foods);
-            // foodIngredients = food.strInstructions;
-            // console.log(foodIngredients);
-            // foodIngredients.replace('\r','</li>');
-            // foodIngredients.replace('\n','<li>');
-            // console.log(foodIngredients);
-            // foodIngredients = '<li>' + foodIngredients + '</li>';
-            // document.getElementById('food-show-list').innerHTML = foodIngredients;
-
-            foodIngredients = food.strInstructions.split('\r\n');
-            let li ;
-            foodIngredients.forEach(ingredient => {
-                li = document.createElement('li');
-                li.innerHTML = `<li><i class="fas fa-check-square"></i>${ingredient}</li>`;
-                document.getElementById('food-show-list').appendChild(li);
-            });
-
-
-
-            // for(ingredient in foodIngredients){
-            //     li = document.createElement('li')
-            //     console.log(ingredient);
-            //     li.innerHTML = `<li>${ingredient}</li>`;
-            //     console.log(li);
-            //     document.getElementById('food-show-list').appendChild(li);
-            // }
+            let i = 1;
+            getClickedFoodList.innerHTML = '';
+            while(food['strIngredient'+i] !== "" && food['strIngredient'+i] !== undefined){
+                getClickedFoodList.innerHTML = getClickedFoodList.innerHTML + `
+                <li><i class="fa fa-check-square" aria-hidden="true"></i>
+                ${food['strMeasure'+i]} ${food['strIngredient'+i]}
+                </li>`;
+                i++;
+            }
         })
     });
 }
